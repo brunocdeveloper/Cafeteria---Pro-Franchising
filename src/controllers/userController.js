@@ -1,8 +1,11 @@
+const md5 = require('md5');
+
 const { registerUser } = require('../models/userModel');
 const { findUser } = require('../services/users');
 
 const createUser = async (req, res) => {
   const { name, password, email } = req.body;
+  const encryptPassword = md5(password);
   const existenceUser = await findUser(email);
   if (existenceUser) {
     return res.status(409).json(
@@ -10,7 +13,7 @@ const createUser = async (req, res) => {
     )
   }
 
-  const newUser = await registerUser({ name, email, password });
+  const newUser = await registerUser({ name, email, password: encryptPassword });
   return res.status(201).json(newUser);
 };
 

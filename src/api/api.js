@@ -9,6 +9,7 @@ app.get('/', (req, res) => {
   return res.status(200).json({ message: 'ok' });
 });
 
-app.use('/user', route.users)
+app.use('/user', route.users);
+app.use('/login', route.login);
 
 module.exports = app;
