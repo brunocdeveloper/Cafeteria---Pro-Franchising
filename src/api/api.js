@@ -10,6 +10,11 @@ app.get('/', (req, res) => {
 });
 
 app.use('/user', route.users);
+
 app.use('/login', route.login);
+
+app.use('/stock', route.stock);
+
+app.use('/inventory', route.inventory);
 
 module.exports = app;

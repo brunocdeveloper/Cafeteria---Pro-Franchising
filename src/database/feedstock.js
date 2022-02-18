@@ -2,7 +2,7 @@
 
 db.ingredients.insertMany([
   {
-    name: "Pó de café",
+    ingredient_name: "Pó de café",
     quantity: 1800,
     measure: "Gramas",
     cost: {
@@ -12,7 +12,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Leite",
+    ingredient_name: "Leite",
     quantity: 8000,
     measure: "ML",
     cost: {
@@ -22,7 +22,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Leite em pó",
+    ingredient_name: "Leite em pó",
     quantity: 5700,
     measure: "Gramas",
     cost: {
@@ -32,7 +32,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Queijo minas",
+    ingredient_name: "Queijo minas",
     quantity: 2600,
     measure: "Gramas",
     cost: {
@@ -42,7 +42,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Presunto",
+    ingredient_name: "Presunto",
     quantity: 3800,
     measure: "Gramas",
     cost: {
@@ -52,7 +52,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Cookie",
+    ingredient_name: "Cookie",
     quantity: 22,
     measure: "Unidade",
     cost: {
@@ -62,7 +62,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Farinha",
+    ingredient_name: "Farinha",
     quantity: 4500,
     measure: "Gramas",
     cost: {
@@ -72,7 +72,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Pão francês",
+    ingredient_name: "Pão francês",
     quantity: 3600,
     measure: "Gramas",
     cost: {
@@ -82,7 +82,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Manteiga",
+    ingredient_name: "Manteiga",
     quantity: 600,
     measure: "Gramas",
     cost: {
@@ -92,7 +92,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Leite Condensado",
+    ingredient_name: "Leite Condensado",
     quantity: 900,
     measure: "Gramas",
     cost: {
@@ -102,7 +102,7 @@ db.ingredients.insertMany([
     }
   },
   {
-    name: "Ovo",
+    ingredient_name: "Ovo",
     quantity: 16,
     measure: "Unidade",
     price: 11.00,

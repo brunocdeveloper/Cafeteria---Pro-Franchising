@@ -9,7 +9,6 @@ const jwtConfig = {
   algorithm: 'HS256',
 };
 
-
 const loginTo =  async (req, res) => {
   const { email, password } = req.body;
 
@@ -25,3 +24,4 @@ const loginTo =  async (req, res) => {
 module.exports = {
   loginTo,
 }
+
