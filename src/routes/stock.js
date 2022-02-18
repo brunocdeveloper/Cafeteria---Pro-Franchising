@@ -1,5 +1,6 @@
 const Router = require('express').Router();
 const multer = require('multer');
+const { editProductImage } = require('../controllers/productsController');
 
 const { searchStock, createProducts } = require('../controllers/stockController');
 const { validateJWT } = require('../middlewares/validateJWT');
@@ -11,11 +12,20 @@ const storage = multer.diskStorage({
     callback(null, 'src/uploads');
   },
   filename: (req, _file, callback) => {
-    const {id} = req.params;
-    callback(null, `${id}.jpeg`)
+    const { name } = req.params;
+    callback(null, `${name}.png`)
   }
 });
 
+const uploads = multer({ storage });
+
 Router.get('/', validateJWT, searchStock);
+
+Router.put(
+  '/product/:name',
+  validateJWT,
+  uploads.single('image'),
+  editProductImage,
+)
 
 module.exports = Router;

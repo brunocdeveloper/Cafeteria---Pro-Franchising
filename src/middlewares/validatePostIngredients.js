@@ -12,7 +12,7 @@ const validateIngredientQuantity = (req, res, next) => {
   if(!quantity) return res.status(401).json({ message: `${quantity} cannot be empty`})
 
   next();
-}
+};
 
 const validateIngredientMeasure = (req, res, next) => {
   const { measure } = req.body;
@@ -20,7 +20,7 @@ const validateIngredientMeasure = (req, res, next) => {
   if(!measure) return res.status(401).json({ message: `${measure} cannot be empty`})
 
   next();
-}
+};
 
 const validateIngredientCost = (req, res, next) => {
   const { cost } = req.body;
@@ -30,7 +30,7 @@ const validateIngredientCost = (req, res, next) => {
   }
   
   next();
-}
+};
 
 module.exports = {
   validateIngredientName,

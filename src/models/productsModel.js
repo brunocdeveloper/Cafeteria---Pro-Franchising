@@ -25,7 +25,20 @@ const generateProduct = async ({ name, image, price, ingredients }) => {
   };
 }
 
+const updateImage = async (name, image) => {
+  const db = await connection();
+  await db.collection('products').updateOne(
+    { name },
+    { $set: { image } }
+  );
+  
+  const product = await findProductByName(name);
+  return product;
+}
+
+
 module.exports = { 
   generateProduct,
   findProductByName,
+  updateImage,
 };
