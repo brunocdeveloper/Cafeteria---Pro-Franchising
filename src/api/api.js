@@ -19,4 +19,6 @@ app.use('/inventory', route.inventory);
 
 app.use('/product', route.product);
 
+app.use('/ingredient', route.ingredient);
+
 module.exports = app;

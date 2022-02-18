@@ -1,4 +1,4 @@
-const { generateProduct, findProductByName } = require("../models/stockModel");
+const { generateProduct, findProductByName } = require("../models/productsModel");
 
 const createProducts = async (req, res) => {
   const { name, image, price, ingredients } = req.body;

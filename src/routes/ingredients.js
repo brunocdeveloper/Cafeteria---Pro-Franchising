@@ -1,7 +1,8 @@
 const Router = require('express').Router();
-const { createProducts } = require('../controllers/productsController');
+const { createIngredients } = require('../controllers/ingredientsController');
 const { validateJWT } = require('../middlewares/validateJWT');
 
-Router.post('/', validateJWT, createProducts);
+
+Router.post('/', validateJWT, createIngredients);
 
 module.exports = Router;
