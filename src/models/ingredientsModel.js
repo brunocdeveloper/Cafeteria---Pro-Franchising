@@ -24,7 +24,29 @@ const generateIngredients = async ({ name, quantity, measure, cost }) => {
   };
 };
 
+const updateIngredients = async (body) => {
+  const db = await connection();
+  const { name, quantity, price, measurement, size} = body;
+  await db.collection('ingredients').updateOne(
+    { name },
+    { $set: {
+        quantity,
+        cost: {
+          price,
+          measurement,
+          size
+        }
+      }
+    }
+  );
+
+  const ingredient = await findIngredientByName(name);
+  return ingredient;
+};
+
+
 module.exports = {
   generateIngredients,
-  findIngredientByName
+  findIngredientByName,
+  updateIngredients
 };

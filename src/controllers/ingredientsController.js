@@ -1,10 +1,9 @@
-const { findIngredientByName, generateIngredients } = require("../models/ingredientsModel");
+const { findIngredientByName, generateIngredients, updateIngredients } = require("../models/ingredientsModel");
 
 const createIngredients = async (req, res) => {
   const { name, quantity, measure, cost } = req.body;
 
   const ingredient = await findIngredientByName(name);
-  console.log()
 
   if(ingredient) {
     return res.status(409).json(
@@ -19,6 +18,13 @@ const createIngredients = async (req, res) => {
   return res.status(201).json(newIngredient);
 }
 
+const editIngredientByName = async (req, res) => {
+  const { body } = req;
+  const editedIngredient = await updateIngredients(body);
+  return res.status(200).json(editedIngredient);
+}
+
 module.exports = { 
   createIngredients,
+  editIngredientByName,
 }

@@ -1,9 +1,11 @@
 const Router = require('express').Router();
 const multer = require('multer');
+const { editIngredientByName } = require('../controllers/ingredientsController');
 const { editProductImage } = require('../controllers/productsController');
 
 const { searchStock, createProducts } = require('../controllers/stockController');
 const { validateJWT } = require('../middlewares/validateJWT');
+const { validatePutIngredients } = require('../middlewares/validatePostIngredients');
 
 /* Configura o multer com o destino e o formato que será
 salvo o arquivo */
@@ -26,6 +28,13 @@ Router.put(
   validateJWT,
   uploads.single('image'),
   editProductImage,
+)
+
+Router.put(
+  '/ingredients',
+  validateJWT,
+  validatePutIngredients,
+  editIngredientByName
 )
 
 module.exports = Router;

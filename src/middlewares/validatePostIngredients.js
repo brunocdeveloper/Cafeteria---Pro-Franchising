@@ -32,9 +32,20 @@ const validateIngredientCost = (req, res, next) => {
   next();
 };
 
+const validatePutIngredients = (req, res, next) => {
+  const { body } = req;
+  const validateFields = Object.keys(body).some((item) => !body[item])
+  if(validateFields) {
+    return res.status(401).json({ message: `Fields cannot be empty` });
+  }
+  
+  next();
+}
+
 module.exports = {
   validateIngredientName,
   validateIngredientQuantity,
   validateIngredientMeasure,
-  validateIngredientCost
+  validateIngredientCost,
+  validatePutIngredients
 };
