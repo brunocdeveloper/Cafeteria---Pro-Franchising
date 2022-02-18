@@ -23,7 +23,7 @@ const getIngredientsWithJoin = async (ingredientName) => {
         pipeline: [
           { $match: { $expr: { $and:
             [
-              { $eq: ["$ingredient_name", "$$product_name"] },
+              { $eq: ["$name", "$$product_name"] },
               { $gte: ["$quantity", "$$product_quantity"] },
             ]
           } } },

@@ -2,16 +2,14 @@ const connection = require('./connection');
 
 const findIngredientByName = async (name) => {
   const db = await connection();
-  const ingredient = await db.collection('ingredients').findOne(
-    { ingredient_name: name }
-  );
+  const ingredient = await db.collection('ingredients').findOne({ name });
   return ingredient;
 };
 
-const generateIngredients = async ({ingredient_name, quantity, measure, cost}) => {
+const generateIngredients = async ({ name, quantity, measure, cost }) => {
   const db = await connection();
   const ingredient = db.collection('ingredients').insertOne({
-    ingredient_name,
+    name,
     quantity,
     measure,
     cost,
@@ -19,7 +17,7 @@ const generateIngredients = async ({ingredient_name, quantity, measure, cost}) =
 
   return {
     _id: ingredient.insertedId,
-    ingredient_name,
+    name,
     quantity,
     measure,
     cost

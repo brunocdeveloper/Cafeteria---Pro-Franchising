@@ -1,4 +1,4 @@
-const validateName = (req, res, next)  => {
+const validateProductName = (req, res, next)  => {
   const { name } = req.body;
 
   if(!name) return res.status(401).json({ message: `${name} cannot be empty`})
@@ -6,7 +6,7 @@ const validateName = (req, res, next)  => {
   next();
 };
 
-const validatePrice = (req, res, next) => {
+const validateProductPrice = (req, res, next) => {
   const { price } = req.body;
 
   if(!price) return res.status(401).json({ message: `${price} cannot be empty`})
@@ -14,7 +14,7 @@ const validatePrice = (req, res, next) => {
   next();
 }
 
-const validateIngredients = (req, res, next) => {
+const validateProductIngredients = (req, res, next) => {
   const { ingredients } = req.body;
   ingredients.map((items) => {
     if (!items.name || !items.measure || !items.quantity) {
@@ -25,7 +25,7 @@ const validateIngredients = (req, res, next) => {
 }
 
 module.exports = {
-  validateName,
-  validatePrice,
-  validateIngredients,
+  validateProductName,
+  validateProductPrice,
+  validateProductIngredients,
 }
