@@ -17,4 +17,6 @@ app.use('/stock', route.stock);
 
 app.use('/inventory', route.inventory);
 
+app.use('/product', route.product);
+
 module.exports = app;

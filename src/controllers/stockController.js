@@ -5,7 +5,9 @@ const {
 const {
   getProductStock,
   getIngredientStock,
-  getIngredientsWithJoin } = require("../models/stockModel")
+  getIngredientsWithJoin, 
+  generateProduct,
+  findProductByName} = require("../models/stockModel")
 
 const searchStock = async (_req, res) => {
   const products = await getProductStock();
@@ -34,6 +36,7 @@ const verifyQuantityToSales = async (req, res) => {
     { message: `Unauthorized. Missing product: ${negativeProduct}`}
   );
 }
+
 
 module.exports = {
   searchStock,

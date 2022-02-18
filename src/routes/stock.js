@@ -1,7 +1,7 @@
 const Router = require('express').Router();
 const multer = require('multer');
 
-const { searchStock } = require('../controllers/stockController');
+const { searchStock, createProducts } = require('../controllers/stockController');
 const { validateJWT } = require('../middlewares/validateJWT');
 
 /* Configura o multer com o destino e o formato que será
