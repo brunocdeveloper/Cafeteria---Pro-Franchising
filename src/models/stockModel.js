@@ -14,6 +14,7 @@ const getIngredientStock = async () => {
 
 const getIngredientsWithJoin = async (ingredientName) => {
   const db = await connection();
+  
   const stock = await db.collection('products').aggregate([
     { $unwind: "$ingredients" },
     {
@@ -44,6 +45,8 @@ const getIngredientsWithJoin = async (ingredientName) => {
       }
     }
   ]).toArray();
+
+  console.log(stock);
   return stock;
 }
 

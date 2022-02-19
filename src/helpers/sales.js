@@ -1,9 +1,9 @@
 /* A função recebe o como parâmetro o nome do produto a ser vendido, e o
 array de produtos retornados pela api. Então o array é filtrado 
 com o nome do produto e depois mapeado com os seus ingredientes. */
-const filterIngredientsByProducts = (nameProduct, products) => {
+const filterIngredientsByProducts = (productName, products) => {
   const filterIngredients = products
-  .filter((items) => items.name === nameProduct)
+  .filter((items) => items.name === productName)
   .map((ingredient) => ingredient.ingredients)[0];
 
   const nameIngredients = filterIngredients.map((items) => items.name);
@@ -33,7 +33,45 @@ const checkQuantityForSale = (ingredients, productsIngredients) => {
   return joinIngredients;
 }
 
+
+/* Recebe um parâmetro que vem direto do banco de dados e faz um pequeno
+serialize para uma melhor tratamento da informação.
+A função também é reutilizada para apresentação de dados na api */
+const getIngredientInfos = (data) => {
+  const ingredientInfos = data.map((items) => ({
+    name: items.name,
+    quantity: items.quantity,
+    measure: items.measure,
+    pricePerMeasure: (items.cost.price / items.cost.measurement ),
+    pricePerSupplier: `${items.cost.measurement} ${items.cost.size} por ${items.cost.price}`,
+  }));
+  return ingredientInfos;
+}
+
+/* 
+A função recebe um array com os ingredientes de um produto e um array com
+a informação dos ingredientes. Filtra os ingredientes e calcula o preço de custo
+baseado nas informações de preço por medida do ingrediente x quantidade gasta para 
+fazer o produto.
+*/
+const sumPriceProduct = (ingredientsPerProduct, allIngredientInfo) => {
+  const priceProducts = [];
+
+  ingredientsPerProduct.filter((items) => (
+    allIngredientInfo.find((ingredients) => {
+      if (items.name === ingredients.name) {
+        priceProducts.push(items.quantity * ingredients.pricePerMeasure)
+      }
+    })
+  ))
+  const sumTotal = priceProducts.reduce((acc, currentValue) => acc + currentValue, 0);
+  return sumTotal;
+}
+
+
 module.exports = {
   filterIngredientsByProducts,
   checkQuantityForSale,
+  getIngredientInfos,
+  sumPriceProduct
 }

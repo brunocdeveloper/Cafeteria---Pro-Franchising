@@ -21,4 +21,6 @@ app.use('/product', route.product);
 
 app.use('/ingredient', route.ingredient);
 
+app.use('/report', route.report);
+
 module.exports = app;

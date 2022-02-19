@@ -3,7 +3,7 @@ const multer = require('multer');
 const { editIngredientByName } = require('../controllers/ingredientsController');
 const { editProductImage } = require('../controllers/productsController');
 
-const { searchStock, createProducts } = require('../controllers/stockController');
+const { searchStockIgredients } = require('../controllers/stockController');
 const { validateJWT } = require('../middlewares/validateJWT');
 const { validatePutIngredients } = require('../middlewares/validatePostIngredients');
 
@@ -21,7 +21,7 @@ const storage = multer.diskStorage({
 
 const uploads = multer({ storage });
 
-Router.get('/', validateJWT, searchStock);
+Router.get('/', validateJWT, searchStockIgredients);
 
 Router.put(
   '/product/:name',

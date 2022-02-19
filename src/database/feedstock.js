@@ -17,8 +17,8 @@ db.ingredients.insertMany([
     measure: "ML",
     cost: {
       price: 4.52,
-      measurement: 1,
-      size: "Litro"
+      measurement: 1000,
+      size: "ML"
     }
   },
   {

@@ -35,4 +35,21 @@ db.products.insertMany([
       }
     ]
   },
+  {
+    name: "Pão de queijo",
+    image: '',
+    price: 9.00,
+    ingredients: [
+      {
+        name: "Queijo minas",
+        measure: "Gramas",
+        quantity: 150,
+      },
+      {
+        name: "Leite",
+        measure: "ML",
+        quantity: 200,
+      },
+    ]
+  },
 ]);
