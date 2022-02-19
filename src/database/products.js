@@ -52,4 +52,21 @@ db.products.insertMany([
       },
     ]
   },
+  {
+    "name": "Trem bom",
+    "image": "",
+    "price": 9.00,
+    "ingredients": [
+      {
+        "name": "Farinha",
+        "measure": "Gramas",
+        "quantity": 150
+      },
+      {
+        "name": "Doce de Leite",
+        "measure": "Gramas",
+        "quantity": 200
+      }
+    ]
+  }
 ]);

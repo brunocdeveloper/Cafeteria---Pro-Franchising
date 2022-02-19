@@ -1,5 +1,6 @@
 const express = require('express');
 const route = require('../routes/index');
+const path = require('path');
 
 const app = express();
 
@@ -22,5 +23,7 @@ app.use('/product', route.product);
 app.use('/ingredient', route.ingredient);
 
 app.use('/report', route.report);
+
+app.use('/images', express.static(path.join(__dirname, '..', 'uploads')))
 
 module.exports = app;
