@@ -14,6 +14,9 @@ const loginTo =  async (req, res) => {
 
   const encryptPassword = md5(password);
   const user = await findUser(email);
+  if(!user) {
+    return res.status(401).json({ message: 'Incorrect email or inexistent' });
+  }
   const token = jwt.sign(user, SECRET, jwtConfig);
 
   if (user.password === encryptPassword && user.email === email) {

@@ -11,33 +11,32 @@ const { expect } = chai;
 const app = require('../api/api');
 
 describe('Post api/user', async () => {
-  describe('Quanto login é feito com sucesso', () => {
-    let response;
-    const DBServer = new MongoMemoryServer();
-    
-    before(async () => {
-      const URLMock = await DBServer.getUri();
-
-      const connectionMock = await MongoClient.connect(URLMock,
-        { useNewUrlParser: true, useUnifiedTopology: true }
-      );
-
-      sinon.stub(MongoClient, 'connect')
-        .resolves(connectionMock);
-
-      response = await chai.request(app).post('/user')
-        .send({
-          "name": "Bruno",
-          "email": "newuser@adm.com",
-          "password": "123456"
-        });
-    });
-
-    after(async () => {
-      // 
-    });
+  let response;
+  const DBServer = new MongoMemoryServer();
   
+  before(async () => {
+    const URLMock = await DBServer.getUri();
 
+    const connectionMock = await MongoClient.connect(URLMock,
+      { useNewUrlParser: true, useUnifiedTopology: true }
+    );
+
+    sinon.stub(MongoClient, 'connect')
+      .resolves(connectionMock);
+
+    response = await chai.request(app).post('/user')
+      .send({
+        "name": "Bruno",
+        "email": "newuser@adm.com",
+        "password": "123456"
+      });
+  });
+
+  after(async () => {
+    MongoClient.connect.restore();
+  });
+
+  describe('Quanto usuário é criado com sucesso', () => {
     it('Retorna o código de status 200', () => {
       expect(response).to.have.status(201);
     });
