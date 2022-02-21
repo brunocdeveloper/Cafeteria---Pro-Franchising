@@ -12,7 +12,6 @@ const { getConnection } = require('./connectionMock');
 
 describe('Post api/login', async () => {
   let connectionMock;
-  let response;
 
   before(async () => {
     connectionMock = await getConnection();
@@ -24,6 +23,8 @@ describe('Post api/login', async () => {
   });
 
   describe('Quando o login é feito com sucesso', () => {
+    let response;
+
     before(async () => {
       await chai.request(app).post('/user')
       .send({
@@ -53,6 +54,8 @@ describe('Post api/login', async () => {
   });
 
   describe('Quando o login não é feito com sucesso', () => {
+    let response;
+    
     before(async () => {
       response = await chai.request(app).post('/login')
         .send({

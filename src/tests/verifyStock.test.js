@@ -9,31 +9,26 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 const app = require('../api/api');
+const { getConnection } = require('./connectionMock');
 
 describe('Get api/inventory', async () => {
-  let response;
-  let token;
-  const DBServer = new MongoMemoryServer();
+  before(async () => {
+    connectionMock = await getConnection();
+    sinon.stub(MongoClient, 'connect').resolves(connectionMock);
+  })
+
+  after(async () => {
+    await MongoClient.connect.restore();
+  });
+
 
   describe('Quando a rota não tem autorização JWT', () => {
+    let response;
+
     before(async () => {
-      const URLMock = await DBServer.getUri();
-  
-      const connectionMock = await MongoClient.connect(URLMock,
-        { useNewUrlParser: true, useUnifiedTopology: true }
-      );
-  
-      sinon.stub(MongoClient, 'connect')
-        .resolves(connectionMock);
-      
-      response = await chai.request(app).get('/inventory')
-        .send({ name: 'Café' });
+    response = await chai.request(app).get('/inventory')
+      .send({ name: 'Café' });
     });
-
-    after(async () => {
-      MongoClient.connect.restore();
-    });
-
 
     it('Retorna o código de status "401"', () => {
       expect(response).to.have.status(401);
