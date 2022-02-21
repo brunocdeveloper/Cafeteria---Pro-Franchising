@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha ./src/tests/**/*$NAME*.test.js --exit",
+    "test:coverage": "nyc npm test",
     "start": "node ./src/api/server.js",
     "dev": "nodemon ./src/api/server.js"
   },
@@ -33,6 +34,7 @@
     "mocha": "^9.2.1",
     "mongodb-memory-server": "^6.9.6",
     "nodemon": "^2.0.15",
+    "nyc": "^15.1.0",
     "sinon": "^13.0.1"
   }
 }
