@@ -12,6 +12,15 @@ const getIngredientStock = async () => {
   return stockIngredients;
 }
 
+
+/* 
+  A função recebe o nome de um ingrediente.
+  A função faz um lookup da coleção de produtos com a coleção ingredientes.
+  A função utiliza operadores match para encontrar dentro da expressão and
+  o que satisfaça a condição o nome do ingrediente da coleção produto
+  seja o mesmo na coleção de ingredientes, e também que a quantidade 
+  em estoque seja maior que a quantidade para uso.
+*/
 const getIngredientsWithJoin = async (ingredientName) => {
   const db = await connection();
 
@@ -47,7 +56,7 @@ const getIngredientsWithJoin = async (ingredientName) => {
   ]).toArray();
 
   return stock;
-}
+};
 
 
 

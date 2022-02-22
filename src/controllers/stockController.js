@@ -24,8 +24,9 @@ const verifyQuantityToSales = async (req, res) => {
   const products = await getProductStock();
   const productsIngredients = filterIngredientsByProducts(name, products);
 
-  /* Busca pelos lookup dos produtos com ingredientes */
+  /* Busca pelo lookup dos produtos com ingredientes */
   const ingredients = await getIngredientsWithJoin(name);
+  
   /* Checa se o produto pode ser vendido com base na quantidade dos ingredientes */
   const negativeProduct = checkQuantityForSale(ingredients, productsIngredients);
   if (negativeProduct.length === 0) {

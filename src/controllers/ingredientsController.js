@@ -1,5 +1,10 @@
 const { findIngredientByName, generateIngredients, updateIngredients } = require("../models/ingredientsModel");
 
+/* 
+  Verifica se existe o ingrediente no banco, caso exista
+  retorna o código de conflito e uma mensagem avisando.
+  Caso não exista cria o ingrediente.
+*/
 const createIngredients = async (req, res) => {
   const { name, quantity, measure, cost } = req.body;
 
@@ -17,6 +22,7 @@ const createIngredients = async (req, res) => {
 
   return res.status(201).json(newIngredient);
 }
+
 
 const editIngredientByName = async (req, res) => {
   const { body } = req;

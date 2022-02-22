@@ -34,9 +34,7 @@ describe('Get api/report/product', async () => {
     it('Retorna um objeto no body', () => {
       expect(response.body).to.be.an('object');
     });
-
   });
-
 
   describe('Quando retorna o produto e preço', () => {
     let response;

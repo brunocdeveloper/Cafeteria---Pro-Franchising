@@ -9,6 +9,12 @@ const jwtConfig = {
   algorithm: 'HS256',
 };
 
+
+/* 
+  Valida se o usuário existe no banco de dados.
+  valida as senhas (que foram cadastradas encriptografadas)
+  e também gera um token jwt para controle de rotas com login.
+*/
 const loginTo =  async (req, res) => {
   const { email, password } = req.body;
 
