@@ -33,7 +33,7 @@ const generateProductReport = async (name) => {
   const costPrice = sumPriceProduct(ingredientsPerProduct, allIngredientInfo);
 
   const markupSuggestion = (costPrice * 1.30).toFixed(2);
-
+  
   return {
     name,
     price: markupSuggestion,

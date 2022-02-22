@@ -2,7 +2,6 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const sinon = require('sinon');
 const { MongoClient } = require('mongodb');
-const { MongoMemoryServer } = require('mongodb-memory-server');
 
 chai.use(chaiHttp);
 
@@ -24,7 +23,7 @@ describe('Get api/stock', async () => {
   });
   
   describe('Quando a rota não tem autorização JWT', () => {
-      let response;
+    let response;
 
     before(async () => {
       response = await chai.request(app).get('/stock')
@@ -50,6 +49,7 @@ describe('Get api/stock', async () => {
 
   describe('Quando a rota retorna com sucesso', () => {
     let token;
+    let response;
 
     before(async () => {
       await chai.request(app).post('/user')

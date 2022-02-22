@@ -12,7 +12,6 @@ const { getConnection } = require('./connectionMock');
 
 describe('Post api/user', async () => {
   let connectionMock;
-  let response;
   
   before(async () => {
     connectionMock = await getConnection();
@@ -24,6 +23,8 @@ describe('Post api/user', async () => {
   });
 
   describe('Quanto usuário é criado com sucesso', () => {
+    let response;
+
     before(async () => {
       response = await chai.request(app).post('/user')
       .send({
